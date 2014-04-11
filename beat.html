@@ -15,6 +15,7 @@
             <div id='track-data-container'>
                 <div id='track-artist'></div>
                 <div id='track-name'></div>
+                 <div id="ytplayer"></div>
             </div>
         </div>
 
@@ -104,11 +105,26 @@
         </div>
     </div>
 
+    <script>
+        // Load the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/player_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // var myVideo=document.createElement('ytplayer');
+      // var myCover= document.getElementById('canvas');
+      // myCover.appendChild(myVideo);
+
+      // Replace the 'ytplayer' element with an <iframe> and
+      // YouTube player after the API code downloads.
+    </script>
     <script src='./processing.js'></script>
     <script src='./spotify.js'></script>
     <script src='./echonest.js'></script>
     <script src='./beat.js'></script>
     <script src='./youtube.js'></script>
+    <script src="http://jwpsrv.com/library/YOUR_JW_PLAYER_ACCOUNT_TOKEN.js" ></script>
 </body>
 
 </html>

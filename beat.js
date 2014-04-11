@@ -188,7 +188,8 @@ function setCurrentTrack(track) {
     document.getElementById('cover').style.backgroundImage = 'url(' + coverURL(track) + ')';
 
     // (1) Modify the displayed artist and track name
-    document.getElementById('track-artist').innerHTML = artists(track);
+    var artistsList=artists(track);
+    document.getElementById('track-artist').innerHTML = artistsList;
     document.getElementById('track-name').innerHTML = track.name;
 
     // (1) Fade in all the children of #info-container-- i.e. our track
@@ -198,6 +199,29 @@ function setCurrentTrack(track) {
 
     // (1) Move our container down to display the info-container
     document.getElementById('container').style.top = (240 + 10) + 'px';
+
+    //go fetch the youtubeVideo
+    youtubeVideo=getVideos(artistsList, track.name, track.length);
+    console.log(youtubeVideo);
+
+          var player;
+
+          
+      function onYouTubePlayerAPIReady() {
+        console.log("run");
+        player = new YT.Player('ytplayer', {
+          height: '240',
+          width: '240',
+          videoId: youtubeVideo.id
+        });
+    }
+    onYouTubePlayerAPIReady(); //call the method to set the video
+   
+           if(ytplayer) {
+    ytplayer.destroy();
+      //ytplayer.loadVideoById(youtubeVideo.id);
+    }
+   
 }
 
 
